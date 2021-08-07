@@ -1,0 +1,43 @@
+Inventory Update
+Compare and update the inventory stored in a 2D array against a second 2D array of a fresh delivery. 
+Update the current existing inventory item quantities (in arr1). If an item cannot be found, 
+add the new item and quantity into the inventory array.
+ The returned inventory array should be in alphabetical order by item?
+
+function updateInventory(arr1, arr2) {
+    var newData = [];
+    arr2.forEach(item=>{
+        const data = arr1.filter(x=>x[1] == item[1]);
+        if(data.length == 0) {
+            newData.push(item);
+        } else {
+            const index = arr1.findIndex(y=>y[1]==item[1]);
+            arr1[index][0] = arr1[index][0] + item[0];
+        }
+    });
+    newData.forEach(x=>arr1.push(x));
+    arr1.sort(
+        function (a, b) {
+            if (a[1].toLowerCase() < b[1].toLowerCase()) return -1;
+            else return 1;
+        }
+    );
+    return arr1;
+}
+
+// Example inventory lists
+var curInv = [
+    [21, "Bowling Ball"],
+    [2, "Dirty Sock"],
+    [1, "Hair Pin"],
+    [5, "Microphone"]
+];
+
+var newInv = [
+    [2, "Hair Pin"],
+    [3, "Half-Eaten Apple"],
+    [67, "Bowling Ball"],
+    [7, "Toothpaste"]
+];
+
+updateInventory([[21, "Bowling Ball"], [2, "Dirty Sock"], [1, "Hair Pin"], [5, "Microphone"]], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]])
