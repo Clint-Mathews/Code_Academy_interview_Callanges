@@ -4,7 +4,7 @@ Update the current existing inventory item quantities (in arr1). If an item cann
 add the new item and quantity into the inventory array.
  The returned inventory array should be in alphabetical order by item?
  
- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function updateInventory(arr1, arr2) {
     var newData = [];
